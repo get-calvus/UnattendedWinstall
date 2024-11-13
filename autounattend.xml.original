@@ -1525,27 +1525,16 @@ $appxPackages = @(
     'MicrosoftCorporationII.MicrosoftFamily', 'Microsoft.WindowsFeedbackHub', 'Microsoft.GetHelp',
     'microsoft.windowscommunicationsapps', 'Microsoft.WindowsMaps', 'Microsoft.ZuneVideo',
     'Microsoft.BingNews', 'Microsoft.MicrosoftOfficeHub', 'Microsoft.Office.OneNote',
-    'Microsoft.OutlookForWindows', 'Microsoft.People', 'Microsoft.PowerAutomateDesktop', 'MicrosoftCorporationII.QuickAssist', 'Microsoft.SkypeApp',
+    'Microsoft.OutlookForWindows', 'Microsoft.People', 'Microsoft.Windows.Photos',
+    'Microsoft.PowerAutomateDesktop', 'MicrosoftCorporationII.QuickAssist', 'Microsoft.SkypeApp',
     'Microsoft.MicrosoftSolitaireCollection', 'Microsoft.MicrosoftStickyNotes', 'MSTeams',
-    'Microsoft.Getstarted', 'Microsoft.Todos', 'Microsoft.BingWeather', 'Microsoft.ZuneMusic', 'Microsoft.Xbox.TCUI', 'Microsoft.XboxApp',
+    'Microsoft.Getstarted', 'Microsoft.Todos', 'Microsoft.WindowsSoundRecorder', 'Microsoft.BingWeather',
+    'Microsoft.ZuneMusic', 'Microsoft.WindowsTerminal', 'Microsoft.Xbox.TCUI', 'Microsoft.XboxApp',
     'Microsoft.XboxGameOverlay', 'Microsoft.XboxGamingOverlay', 'Microsoft.XboxIdentityProvider',
     'Microsoft.XboxSpeechToTextOverlay', 'Microsoft.GamingApp', 'Microsoft.YourPhone', 'Microsoft.OneDrive',
-    'Microsoft.549981C3F5F10', 'Microsoft.MixedReality.Portal', 'Microsoft.Windows.Ai.Copilot.Provider', 'Microsoft.Copilot', 'Microsoft.Copilot_8wekyb3d8bbwe',
-    'Microsoft.WindowsMeetNow','7EE7776C.LinkedInforWindows_w1wdnht996qgy', 'Clipchamp.Clipchamp_yxz26nhyzhsrt', 'king.com.CandyCrushFriends_kgqvnymyfvs32,
-    'king.com.CandyCrushSodaSaga_kgqvnymyfvs32', 'king.com.FarmHeroesSaga_kgqvnymyfvs32', 'Microsoft.549981C3F5F10_8wekyb3d8bbwe', 'Microsoft.3DBuilder_8wekyb3d8bbwe',
-    'Microsoft.BingFinance_8wekyb3d8bbwe', 'Microsoft.BingNews_8wekyb3d8bbwe, 'Microsoft.BingSports_8wekyb3d8bbwe', 'Microsoft.BingWeather_8wekyb3d8bbwe',
-    'MicrosoftWindows.Client.CoPilot_cw5n1h2txyewy', 'MicrosoftWindows.CrossDevice_cw5n1h2txyewy', 'MicrosoftCorporationII.MicrosoftFamily_8wekyb3d8bbwe',
-    'Microsoft.Windows.DevHome_8wekyb3d8bbwe', 'Microsoft.Windows.DevHomeGitHubExtension_8wekyb3d8bbwe', 'Microsoft.GamingApp_8wekyb3d8bbwe',
-    'Microsoft.GetHelp_8wekyb3d8bbwe', 'Microsoft.Getstarted_8wekyb3d8bbwe', 'Microsoft.Messaging_8wekyb3d8bbwe', 'Microsoft.Microsoft3DViewer_8wekyb3d8bbwe',
-    'Microsoft.MicrosoftJournal_8wekyb3d8bbwe', 'Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe', 'Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe', 
-    'Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe', 'Microsoft.MixedReality.Portal_8wekyb3d8bbwe', 'Microsoft.Office.Desktop_8wekyb3d8bbwe',
-    'Microsoft.Office.Desktop.Access_8wekyb3d8bbwe', 'Microsoft.Office.Desktop.Excel_8wekyb3d8bbwe', 'Microsoft.Office.Desktop.Outlook_8wekyb3d8bbwe',
-    'Microsoft.Office.Desktop.PowerPoint_8wekyb3d8bbwe', 'Microsoft.Office.Desktop.Publisher_8wekyb3d8bbwe', 'Microsoft.Office.Desktop.Word_8wekyb3d8bbwe',
-    'Microsoft.OutlookForWindows_8wekyb3d8bbwe', 'Microsoft.OneConnect_8wekyb3d8bbwe', 'Microsoft.MSPaint_8wekyb3d8bbwe', 'Microsoft.People_8wekyb3d8bbwe',
-    'Microsoft.PowerAutomateDesktop_8wekyb3d8bbwe', 'Microsoft.Print3D_8wekyb3d8bbwe', 'Microsoft.SkypeApp_kzf8qxf38zg5c', 'Microsoft.Todos_8wekyb3d8bbwe',
-    'Microsoft.windowscommunicationsapps_8wekyb3d8bbwe', 'Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe', 'Microsoft.WindowsMaps_8wekyb3d8bbwe',
-    'Microsoft.XboxApp_8wekyb3d8bbwe', 'Microsoft.XboxGameOverlay_8wekyb3d8bbwe', 'Microsoft.XboxGamingOverlay_8wekyb3d8bbwe', 'Microsoft.YourPhone_8wekyb3d8bbwe',
-    'Microsoft.ZuneMusic_8wekyb3d8bbwe', 'Microsoft.ZuneVideo_8wekyb3d8bbwe', 'MicrosoftTeams_8wekyb3d8bbwe', 'Disney.37853FC22B2CE_6rarf9sa4v8jt', 'SpotifyAB.SpotifyMusic_zpdnekdrzrea0'
+    'Microsoft.549981C3F5F10', 'Microsoft.MixedReality.Portal', 'Microsoft.ScreenSketch'
+    'Microsoft.Windows.Ai.Copilot.Provider', 'Microsoft.Copilot', 'Microsoft.Copilot_8wekyb3d8bbwe',
+    'Microsoft.WindowsMeetNow', 'Microsoft.WindowsStore', 'Microsoft.Paint', 'Microsoft.MSPaint'
 )
 
 # Define Windows Capabilities
