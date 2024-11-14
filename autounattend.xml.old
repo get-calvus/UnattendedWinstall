@@ -490,7 +490,7 @@
           <Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassDiskCheck /t REG_DWORD /d 1 /f</Path>
         </RunSynchronousCommand>
         <!--Disables Windows Defender from Starting -->
-        <!--<RunSynchronousCommand wcm:action="add">
+        <RunSynchronousCommand wcm:action="add">
           <Order>7</Order>
           <Path>cmd.exe /c "&gt;&gt;"X:\disable-defender.vbs" echo WScript.Echo "Scanning for newly created SYSTEM registry hive file to disable Windows Defender services...""</Path>
         </RunSynchronousCommand>
@@ -681,7 +681,7 @@
         <RunSynchronousCommand wcm:action="add">
           <Order>54</Order>
           <Path>cmd.exe /c "start /MIN cscript.exe //E:vbscript X:\disable-defender.vbs"</Path>
-        </RunSynchronousCommand> -->
+        </RunSynchronousCommand>
       </RunSynchronous>
     </component>
   </settings>
@@ -865,7 +865,7 @@
         <RunSynchronousCommand wcm:action="add">
           <Order>8</Order>
           <!-- Creates UnattendedWinstall Script Shortcut on Desktop -->
-          <!-- <Path>powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Windows\Temp\UWScriptShortcut.ps1"</Path> -->
+          <Path>powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Windows\Temp\UWScriptShortcut.ps1"</Path>
         </RunSynchronousCommand>
         <RunSynchronousCommand wcm:action="add">
           <Order>9</Order>
@@ -1521,26 +1521,38 @@ function Install-AppWithWinGet {
 # Define Packages
 $appxPackages = @(
     'Microsoft.Microsoft3DViewer', 'Microsoft.BingSearch', 'Microsoft.WindowsCamera', 'Clipchamp.Clipchamp',
-    'Microsoft.WindowsAlarms', 'Microsoft.549981C3F5F10', 'Microsoft.Windows.DevHome', 'MicrosoftCorporationII.MicrosoftFamily',
-    'Microsoft.WindowsFeedbackHub', 'Microsoft.GetHelp', 'microsoft.windowscommunicationsapps', 'Microsoft.WindowsMaps',
-    'Microsoft.ZuneVideo', 'Microsoft.BingNews', 'Microsoft.MicrosoftOfficeHub', 'Microsoft.Office.OneNote',
-    'Microsoft.OutlookForWindows', 'Microsoft.People', 'Microsoft.PowerAutomateDesktop', 'MicrosoftCorporationII.QuickAssist',
-    'Microsoft.SkypeApp', 'Microsoft.MicrosoftSolitaireCollection', 'Microsoft.MicrosoftStickyNotes', 'MSTeams',
-    'Microsoft.Getstarted', 'Microsoft.Todos', 'Microsoft.BingWeather', 'Microsoft.ZuneMusic',
-    'Microsoft.Xbox.TCUI', 'Microsoft.XboxApp', 'Microsoft.XboxGameOverlay', 'Microsoft.XboxGamingOverlay',
-    'Microsoft.XboxIdentityProvider', 'Microsoft.XboxSpeechToTextOverlay', 'Microsoft.GamingApp', 'Microsoft.YourPhone',
-    'Microsoft.OneDrive', 'Microsoft.MixedReality.Portal', 'Microsoft.Windows.Ai.Copilot.Provider', 'Microsoft.Copilot',
-    'Microsoft.Copilot_8wekyb3d8bbwe', 'Microsoft.WindowsMeetNow'
+    'Microsoft.WindowsAlarms', 'Microsoft.549981C3F5F10', 'Microsoft.Windows.DevHome',
+    'MicrosoftCorporationII.MicrosoftFamily', 'Microsoft.WindowsFeedbackHub', 'Microsoft.GetHelp',
+    'microsoft.windowscommunicationsapps', 'Microsoft.WindowsMaps', 'Microsoft.ZuneVideo',
+    'Microsoft.BingNews', 'Microsoft.MicrosoftOfficeHub', 'Microsoft.Office.OneNote',
+    'Microsoft.OutlookForWindows', 'Microsoft.People', 'Microsoft.PowerAutomateDesktop', 'MicrosoftCorporationII.QuickAssist', 'Microsoft.SkypeApp',
+    'Microsoft.MicrosoftSolitaireCollection', 'Microsoft.MicrosoftStickyNotes', 'MSTeams',
+    'Microsoft.Getstarted', 'Microsoft.Todos', 'Microsoft.BingWeather', 'Microsoft.ZuneMusic', 'Microsoft.Xbox.TCUI', 'Microsoft.XboxApp',
+    'Microsoft.XboxGameOverlay', 'Microsoft.XboxGamingOverlay', 'Microsoft.XboxIdentityProvider',
+    'Microsoft.XboxSpeechToTextOverlay', 'Microsoft.GamingApp', 'Microsoft.YourPhone', 'Microsoft.OneDrive',
+    'Microsoft.549981C3F5F10', 'Microsoft.MixedReality.Portal', 'Microsoft.Windows.Ai.Copilot.Provider', 'Microsoft.Copilot', 'Microsoft.Copilot_8wekyb3d8bbwe',
+    'Microsoft.WindowsMeetNow',
+    '7EE7776C.LinkedInforWindows_w1wdnht996qgy', 'Clipchamp.Clipchamp_yxz26nhyzhsrt', 'king.com.CandyCrushFriends_kgqvnymyfvs32,
+    'king.com.CandyCrushSodaSaga_kgqvnymyfvs32', 'king.com.FarmHeroesSaga_kgqvnymyfvs32', 'Microsoft.549981C3F5F10_8wekyb3d8bbwe', 'Microsoft.3DBuilder_8wekyb3d8bbwe',
+    'Microsoft.BingFinance_8wekyb3d8bbwe', 'Microsoft.BingNews_8wekyb3d8bbwe, 'Microsoft.BingSports_8wekyb3d8bbwe', 'Microsoft.BingWeather_8wekyb3d8bbwe',
+    'MicrosoftWindows.Client.CoPilot_cw5n1h2txyewy', 'MicrosoftWindows.CrossDevice_cw5n1h2txyewy', 'MicrosoftCorporationII.MicrosoftFamily_8wekyb3d8bbwe',
+    'Microsoft.Windows.DevHome_8wekyb3d8bbwe', 'Microsoft.Windows.DevHomeGitHubExtension_8wekyb3d8bbwe', 'Microsoft.GamingApp_8wekyb3d8bbwe',
+    'Microsoft.GetHelp_8wekyb3d8bbwe', 'Microsoft.Getstarted_8wekyb3d8bbwe', 'Microsoft.Messaging_8wekyb3d8bbwe', 'Microsoft.Microsoft3DViewer_8wekyb3d8bbwe',
+    'Microsoft.MicrosoftJournal_8wekyb3d8bbwe', 'Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe', 'Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe', 
+    'Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe', 'Microsoft.MixedReality.Portal_8wekyb3d8bbwe', 'Microsoft.Office.Desktop_8wekyb3d8bbwe',
+    'Microsoft.Office.Desktop.Access_8wekyb3d8bbwe', 'Microsoft.Office.Desktop.Excel_8wekyb3d8bbwe', 'Microsoft.Office.Desktop.Outlook_8wekyb3d8bbwe',
+    'Microsoft.Office.Desktop.PowerPoint_8wekyb3d8bbwe', 'Microsoft.Office.Desktop.Publisher_8wekyb3d8bbwe', 'Microsoft.Office.Desktop.Word_8wekyb3d8bbwe',
+    'Microsoft.OutlookForWindows_8wekyb3d8bbwe', 'Microsoft.OneConnect_8wekyb3d8bbwe', 'Microsoft.MSPaint_8wekyb3d8bbwe', 'Microsoft.People_8wekyb3d8bbwe',
+    'Microsoft.PowerAutomateDesktop_8wekyb3d8bbwe', 'Microsoft.Print3D_8wekyb3d8bbwe', 'Microsoft.SkypeApp_kzf8qxf38zg5c', 'Microsoft.Todos_8wekyb3d8bbwe',
+    'Microsoft.windowscommunicationsapps_8wekyb3d8bbwe', 'Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe', 'Microsoft.WindowsMaps_8wekyb3d8bbwe',
+    'Microsoft.XboxApp_8wekyb3d8bbwe', 'Microsoft.XboxGameOverlay_8wekyb3d8bbwe', 'Microsoft.XboxGamingOverlay_8wekyb3d8bbwe', 'Microsoft.YourPhone_8wekyb3d8bbwe',
+    'Microsoft.ZuneMusic_8wekyb3d8bbwe', 'Microsoft.ZuneVideo_8wekyb3d8bbwe', 'MicrosoftTeams_8wekyb3d8bbwe', 'Disney.37853FC22B2CE_6rarf9sa4v8jt', 'SpotifyAB.SpotifyMusic_zpdnekdrzrea0'
 )
 
-<#
 # Define Windows Capabilities
 $capabilities = @(
-    'MathRecognizer', 'OpenSSH.Client',
-    'Microsoft.Windows.PowerShell.ISE', 'App.Support.QuickAssist', 'App.StepsRecorder',
-    'Media.WindowsMediaPlayer', 'Microsoft.Windows.WordPad', 'Microsoft.Windows.MSPaint'
+    'App.Support.QuickAssist', 'MathRecognizer', 'OpenSSH.Client', 'Microsoft.Windows.PowerShell.ISE', 'Microsoft.Windows.WordPad', 'XPS.Viewer'
 )
-#>
 
 # Apply registry mods to prevent reinstallation and disable features
 function Set-AppsRegistry {
@@ -1619,9 +1631,9 @@ function Remove-Apps {
         Where-Object { $appxPackages -contains $_.Name } |
         Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue | Out-Null
         # Legacy Windows Features & Apps
-        # Get-WindowsCapability -Online |
-        # Where-Object { $capabilities -contains ($_.Name -split '~')[0] } |
-        # Remove-WindowsCapability -Online -ErrorAction SilentlyContinue | Out-Null
+        Get-WindowsCapability -Online |
+        Where-Object { $capabilities -contains ($_.Name -split '~')[0] } |
+        Remove-WindowsCapability -Online -ErrorAction SilentlyContinue | Out-Null
         # Calls specified functions
         Show-Header
         Set-AppsRegistry
@@ -2087,8 +2099,8 @@ Windows Registry Editor Version 5.00
 "DisableCloudOptimizedContent"=dword:00000001
 
 ; Blocks the "Allow my organization to manage my device" and "No, sign in to this app only" pop-up message
-; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin]
-; "BlockAADWorkplaceJoin"=dword:00000001
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin]
+;"BlockAADWorkplaceJoin"=dword:00000001
 
 ; --Start Menu Customization--
 ; Removes All Pinned Apps from the Start Menu to Clean it Up
@@ -2121,15 +2133,15 @@ Windows Registry Editor Version 5.00
 "Scheduling Category"="High"
 
 ; disable startup sound
-; [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation]
-; "DisableStartupSound"=dword:00000001
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation]
+"DisableStartupSound"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\EditionOverrides]
-; "UserSetting_DisableStartupSound"=dword:00000001
+"UserSetting_DisableStartupSound"=dword:00000001
 
 ; disable device installation settings
-; [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
-; "PreventDeviceMetadataFromNetwork"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
+"PreventDeviceMetadataFromNetwork"=dword:00000001
 
 ; NETWORK AND INTERNET
 ; disable allow other network users to control or disable the shared internet connection
@@ -2147,8 +2159,8 @@ Windows Registry Editor Version 5.00
 
 ; TROUBLESHOOTING
 ; disable automatic maintenance
-; [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
-; "MaintenanceDisabled"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
+"MaintenanceDisabled"=dword:00000001
 
 ; SECURITY AND MAINTENANCE
 ; disable report problems
@@ -2186,13 +2198,13 @@ Windows Registry Editor Version 5.00
 "HwSchMode"=dword:00000002
 
 ; disable storage sense
-; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\StorageSense]
-; "AllowStorageSenseGlobal"=dword:00000000
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\StorageSense]
+;"AllowStorageSenseGlobal"=dword:00000000
 
 ; --OTHER--
 ; Disable update Microsoft Store apps automatically
-; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
-; "AutoDownload"=dword:00000002
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+;"AutoDownload"=dword:00000002
 
 ; EDGE
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
@@ -2245,7 +2257,7 @@ Windows Registry Editor Version 5.00
 [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
 
 ; Remove Home Folder
-; [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}]
 
 [HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "MouseSpeed"="0"
@@ -2654,16 +2666,16 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "LaunchTo"=dword:00000001
 "HideFileExt"=dword:00000000
-; "FolderContentsInfoTip"=dword:00000000
-; "ShowInfoTip"=dword:00000000
-; "ShowPreviewHandlers"=dword:00000000
-; "ShowStatusBar"=dword:00000000
+"FolderContentsInfoTip"=dword:00000000
+"ShowInfoTip"=dword:00000000
+"ShowPreviewHandlers"=dword:00000000
+"ShowStatusBar"=dword:00000000
 "ShowSyncProviderNotifications"=dword:00000000
 "SharingWizardOn"=dword:00000000
-; "TaskbarAnimations"=dword:0
-; "IconsOnly"=dword:0
-; "ListviewAlphaSelect"=dword:0
-; "ListviewShadow"=dword:0
+"TaskbarAnimations"=dword:0
+"IconsOnly"=dword:0
+"ListviewAlphaSelect"=dword:0
+"ListviewShadow"=dword:0
 "Start_Layout"=dword:00000001
 "Start_AccountNotifications"=dword:00000000
 "Start_TrackDocs"=dword:00000000 
@@ -2679,16 +2691,16 @@ Windows Registry Editor Version 5.00
 "EnableTaskGroups"=dword:00000000
 "EnableSnapAssistFlyout"=dword:00000000
 "SnapFill"=dword:00000000
-; "JointResize"=dword:00000000
-; "MultiTaskingAltTabFilter"=dword:00000003
+"JointResize"=dword:00000000
+"MultiTaskingAltTabFilter"=dword:00000003
 
 ; hide frequent folders in quick access
 ; disable show files from office.com
 ; show all taskbar icons on Windows 10
-; [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
-; "ShowFrequent"=dword:00000000
-; "ShowCloudFilesInQuickAccess"=dword:00000000
-; "EnableAutoTray"=dword:00000000
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"ShowFrequent"=dword:00000000
+"ShowCloudFilesInQuickAccess"=dword:00000000
+"EnableAutoTray"=dword:00000000
 
 ; enable display full path in the title bar
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]
@@ -2721,8 +2733,8 @@ Windows Registry Editor Version 5.00
 
 ; SYSTEM AND SECURITY
 ; set appearance options to custom
-; [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
-; "VisualFXSetting"=dword:3
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
+"VisualFXSetting"=dword:3
 
 ; disable animate controls and elements inside windows
 ; disable fade or slide menus into view
@@ -2736,13 +2748,13 @@ Windows Registry Editor Version 5.00
 ; 100% dpi scaling
 ; disable fix scaling for apps
 ; disable menu show delay
-; [HKEY_CURRENT_USER\Control Panel\Desktop]
-; "UserPreferencesMask"=hex(2):90,12,03,80,10,00,00,00
-; "FontSmoothing"="2"
-; "LogPixels"=dword:00000060
-; "Win8DpiScaling"=dword:00000001
-; "EnablePerProcessSystemDPI"=dword:00000000
-; "MenuShowDelay"="0"
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"UserPreferencesMask"=hex(2):90,12,03,80,10,00,00,00
+"FontSmoothing"="2"
+"LogPixels"=dword:00000060
+"Win8DpiScaling"=dword:00000001
+"EnablePerProcessSystemDPI"=dword:00000000
+"MenuShowDelay"="0"
 
 ; --IMMERSIVE CONTROL PANEL--
 ; PRIVACY
@@ -2796,15 +2808,15 @@ Windows Registry Editor Version 5.00
 "IsDeviceSearchHistoryEnabled"=dword:00000000
 "SafeSearchMode"=dword:00000000
 "IsAADCloudSearchEnabled"=dword:00000000
-; "IsMSACloudSearchEnabled"=dword:00000000
+"IsMSACloudSearchEnabled"=dword:00000000
 
 ; EASE OF ACCESS
 ; disable magnifier settings 
-; [HKEY_CURRENT_USER\SOFTWARE\Microsoft\ScreenMagnifier]
-; "FollowCaret"=dword:00000000
-; "FollowNarrator"=dword:00000000
-; "FollowMouse"=dword:00000000
-; "FollowFocus"=dword:00000000
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\ScreenMagnifier]
+"FollowCaret"=dword:00000000
+"FollowNarrator"=dword:00000000
+"FollowMouse"=dword:00000000
+"FollowFocus"=dword:00000000
 
 ; GAMING
 ; disable game bar
@@ -2868,9 +2880,9 @@ Windows Registry Editor Version 5.00
 ; disable add a period after i double-tap the spacebar
 ; disable show key background
 [HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7]
-; "EnableAutoShiftEngage"=dword:00000000
+"EnableAutoShiftEngage"=dword:00000000
 "EnableKeyAudioFeedback"=dword:00000000
-; "EnableDoubleTapSpace"=dword:00000000
+"EnableDoubleTapSpace"=dword:00000000
 "IsKeyBackgroundEnabled"=dword:00000000
 
 ; PERSONALIZATION
@@ -2892,7 +2904,7 @@ Windows Registry Editor Version 5.00
 
 ; remove search from taskbar
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
-"SearchboxTaskbarMode"=dword:00000001
+"SearchboxTaskbarMode"=dword:00000000
 
 ; disable use dynamic lighting on my devices
 ; disable compatible apps in the forground always control lighting
@@ -2900,7 +2912,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Lighting]
 "AmbientLightingEnabled"=dword:00000000
 "ControlledByForegroundApp"=dword:00000000
-; "UseSystemAccentColor"=dword:00000000
+"UseSystemAccentColor"=dword:00000000
 
 ; DEVICES
 ; disable let windows manage my default printer
@@ -3411,13 +3423,12 @@ Windows Registry Editor Version 5.00
 function Set-ServiceStartup {
     # List of services to set to Disabled
     $disabledServices = @(
-        'AJRouter', 'AssignedAccessManagerSvc', 'AppIDSvc', 'BDESVC', 'DiagTrack', 
-        'DPS', 'EFS', 'FontCache', 'PcaSvc', 'RmSvc', 'WSearch', 'WbioSrvc', 'lfsvc'
+        'AJRouter', 'AssignedAccessManagerSvc', 'AppIDSvc', 'BDESVC', 'DiagTrack', 'EFS', 'FontCache', 'PcaSvc', 'WbioSrvc', 'lfsvc'
     )
 
     # List of services to set to Manual
     $manualServices = @(
-        'BITS', 'CDPSvc', 'DusmSvc', 'LanmanServer', 'LanmanWorkstation', 
+        'CDPSvc', 'DusmSvc', 'LanmanServer', 'LanmanWorkstation', 
         'Spooler', 'StateRepository', 'StorSvc', 'SysMain', 'TokenBroker', 
         'TrkWks', 'UsoSvc', 'WpnService', 'edgeupdate', 'edgeupdatem', 
         'iphlpsvc', 'sppsvc'
@@ -3682,13 +3693,13 @@ function Set-DefaultPowerSettings {
 # Check if this is running in the specialize phase to Apply Settings automatically during Windows Installation
 if (Test-Path -Path $markerFilePath) {
     # Bloatware Apps
-    Get-AppxProvisionedPackage -Online |
-    Where-Object { $appxPackages -contains $_.DisplayName } |
-    Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction SilentlyContinue
+    #Get-AppxProvisionedPackage -Online |
+    #Where-Object { $appxPackages -contains $_.DisplayName } |
+    #Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction SilentlyContinue
     # Legacy Windows Features & Apps
-    # Get-WindowsCapability -Online |
-    # Where-Object { $capabilities -contains ($_.Name -split '~')[0] } |
-    # Remove-WindowsCapability -Online -ErrorAction SilentlyContinue
+    #Get-WindowsCapability -Online |
+    #Where-Object { $capabilities -contains ($_.Name -split '~')[0] } |
+    #Remove-WindowsCapability -Online -ErrorAction SilentlyContinue
     # Additional Software & Apps
     Set-AppsRegistry
     Remove-OneDrive
@@ -3993,16 +4004,16 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "LaunchTo"=dword:00000001
 "HideFileExt"=dword:00000000
-; "FolderContentsInfoTip"=dword:00000000
-; "ShowInfoTip"=dword:00000000
-; "ShowPreviewHandlers"=dword:00000000
-; "ShowStatusBar"=dword:00000000
+"FolderContentsInfoTip"=dword:00000000
+"ShowInfoTip"=dword:00000000
+"ShowPreviewHandlers"=dword:00000000
+"ShowStatusBar"=dword:00000000
 "ShowSyncProviderNotifications"=dword:00000000
 "SharingWizardOn"=dword:00000000
-; "TaskbarAnimations"=dword:0
-; "IconsOnly"=dword:0
-; "ListviewAlphaSelect"=dword:0
-; "ListviewShadow"=dword:0
+"TaskbarAnimations"=dword:0
+"IconsOnly"=dword:0
+"ListviewAlphaSelect"=dword:0
+"ListviewShadow"=dword:0
 "Start_Layout"=dword:00000001
 "Start_AccountNotifications"=dword:00000000
 "Start_TrackDocs"=dword:00000000 
@@ -4018,16 +4029,16 @@ Windows Registry Editor Version 5.00
 "EnableTaskGroups"=dword:00000000
 "EnableSnapAssistFlyout"=dword:00000000
 "SnapFill"=dword:00000000
-; "JointResize"=dword:00000000
-; "MultiTaskingAltTabFilter"=dword:00000003
+"JointResize"=dword:00000000
+"MultiTaskingAltTabFilter"=dword:00000003
 
 ; hide frequent folders in quick access
 ; disable show files from office.com
 ; show all taskbar icons on Windows 10
-; [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
-; "ShowFrequent"=dword:00000000
-; "ShowCloudFilesInQuickAccess"=dword:00000000
-; "EnableAutoTray"=dword:00000000
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"ShowFrequent"=dword:00000000
+"ShowCloudFilesInQuickAccess"=dword:00000000
+"EnableAutoTray"=dword:00000000
 
 ; enable display full path in the title bar
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]
@@ -4060,8 +4071,8 @@ Windows Registry Editor Version 5.00
 
 ; SYSTEM AND SECURITY
 ; set appearance options to custom
-; [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
-; "VisualFXSetting"=dword:3
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
+"VisualFXSetting"=dword:3
 
 ; disable animate controls and elements inside windows
 ; disable fade or slide menus into view
@@ -4075,13 +4086,13 @@ Windows Registry Editor Version 5.00
 ; 100% dpi scaling
 ; disable fix scaling for apps
 ; disable menu show delay
-; [HKEY_CURRENT_USER\Control Panel\Desktop]
-; "UserPreferencesMask"=hex(2):90,12,03,80,10,00,00,00
-; "FontSmoothing"="2"
-; "LogPixels"=dword:00000060
-; "Win8DpiScaling"=dword:00000001
-; "EnablePerProcessSystemDPI"=dword:00000000
-; "MenuShowDelay"="0"
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"UserPreferencesMask"=hex(2):90,12,03,80,10,00,00,00
+"FontSmoothing"="2"
+"LogPixels"=dword:00000060
+"Win8DpiScaling"=dword:00000001
+"EnablePerProcessSystemDPI"=dword:00000000
+"MenuShowDelay"="0"
 
 ; --IMMERSIVE CONTROL PANEL--
 ; PRIVACY
@@ -4135,7 +4146,7 @@ Windows Registry Editor Version 5.00
 "IsDeviceSearchHistoryEnabled"=dword:00000000
 "SafeSearchMode"=dword:00000000
 "IsAADCloudSearchEnabled"=dword:00000000
-; "IsMSACloudSearchEnabled"=dword:00000000
+"IsMSACloudSearchEnabled"=dword:00000000
 
 ; EASE OF ACCESS
 ; disable magnifier settings 
@@ -4207,9 +4218,9 @@ Windows Registry Editor Version 5.00
 ; disable add a period after i double-tap the spacebar
 ; disable show key background
 [HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7]
-; "EnableAutoShiftEngage"=dword:00000000
+"EnableAutoShiftEngage"=dword:00000000
 "EnableKeyAudioFeedback"=dword:00000000
-; "EnableDoubleTapSpace"=dword:00000000
+"EnableDoubleTapSpace"=dword:00000000
 "IsKeyBackgroundEnabled"=dword:00000000
 
 ; PERSONALIZATION
@@ -4231,7 +4242,7 @@ Windows Registry Editor Version 5.00
 
 ; remove search from taskbar
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
-"SearchboxTaskbarMode"=dword:00000001
+"SearchboxTaskbarMode"=dword:00000000
 
 ; disable use dynamic lighting on my devices
 ; disable compatible apps in the forground always control lighting
@@ -4239,7 +4250,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Lighting]
 "AmbientLightingEnabled"=dword:00000000
 "ControlledByForegroundApp"=dword:00000000
-; "UseSystemAccentColor"=dword:00000000
+"UseSystemAccentColor"=dword:00000000
 
 ; DEVICES
 ; disable let windows manage my default printer
