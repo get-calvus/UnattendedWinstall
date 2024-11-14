@@ -865,7 +865,7 @@
         <RunSynchronousCommand wcm:action="add">
           <Order>8</Order>
           <!-- Creates UnattendedWinstall Script Shortcut on Desktop -->
-          <!-- <Path>powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Windows\Temp\UWScriptShortcut.ps1"</Path> -->
+          <Path>powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Windows\Temp\UWScriptShortcut.ps1"</Path>
         </RunSynchronousCommand>
         <RunSynchronousCommand wcm:action="add">
           <Order>9</Order>
