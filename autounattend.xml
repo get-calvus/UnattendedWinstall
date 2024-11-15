@@ -2160,6 +2160,11 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "DisableAutomaticRestartSignOn"=dword:00000001
 
+; ACCOUNTS
+; disable First Logon Animation
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"EnableFirstLogonAnimation"=dword:00000000
+
 ; APPS
 ; disable archive apps 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx]
@@ -2435,6 +2440,11 @@ Windows Registry Editor Version 5.00
 ; use my sign in info after restart
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "DisableAutomaticRestartSignOn"=-
+
+; ACCOUNTS
+; enable First Logon Animation
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"EnableFirstLogonAnimation"=-
 
 ; APPS
 ; archive apps
